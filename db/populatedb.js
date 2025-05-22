@@ -1,0 +1,40 @@
+const { Client } = require("pg");
+require("dotenv").config();
+
+const SQL = `
+
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS messages;
+
+CREATE TABLE IF NOT EXISTS users (
+id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+name VARCHAR(30) NOT NULL,
+surname VARCHAR(30) NOT NULL,
+email VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+membership BOOLEAN
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+author_id INTEGER NOT NULL,
+title VARCHAR (255) NOT NULL, 
+content TEXT NOT NULL,
+date TIMESTAMP WITH TIME ZONE,
+FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+`;
+
+async function main() {
+    console.log("seeding");
+    const client = new Client({
+        connectionString: process.env.DATABASE_URL,
+    });
+    await client.connect();
+    await client.query(SQL);
+    await client.end();
+    console.log("done");
+};
+
+main();
