@@ -6,7 +6,13 @@
     <title>Index</title>
 </head>
 <body>
-    Hello, World!
-    
+    <% if (locals.user) {%> 
+        <div>Hello <%= user.name %> </div>
+        <a href="/logOut">Log Out</a>
+        <a href="newMessage">New Message</a>
+    <% } else { %>
+        <a href="/logIn">Log In</a>
+        <a href="/signIn">Sign In</a>
+    <% } %>
 </body>
 </html>

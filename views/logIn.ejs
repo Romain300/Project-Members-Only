@@ -6,7 +6,8 @@
     <title>Log In</title>
 </head>
 <body>
-    <form>
+    <%- include("partials/errors.ejs") %>
+    <form action="/logIn" method="POST">
         <div>
             <label for="email">Email:</label>
             <input type="email" name="email" id="email">
@@ -15,6 +16,7 @@
             <label for="password">Password:</label>
             <input type="password" name="password" id="password">
         </div>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

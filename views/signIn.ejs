@@ -6,7 +6,8 @@
     <title>Sign In</title>
 </head>
 <body>
-    <form>
+    <%- include("partials/errors.ejs") %>
+    <form action="/signIn" method="POST">
         <div>
             <label for="name">Name:</label>
             <input type="text" name="name" id="name">
@@ -27,6 +28,7 @@
             <label for="c_password">Confirm Password:</label>
             <input type="password" name="c_password" id="c_password">
         </div>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
