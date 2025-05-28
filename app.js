@@ -17,6 +17,9 @@ const PORT = process.env.PORT || 3000;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
@@ -27,6 +30,7 @@ app.use("/", indexRouter);
 app.use("/signIn", signInRouter);
 app.use("/logIn", logInRouter);
 app.use("/newMessage", newMessageRouter);
+
 
 app.get("/logOut", (req, res, next) => {
     req.logout((err) => {

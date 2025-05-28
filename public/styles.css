@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Exile&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Exile', serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #3b0a45;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    background-color: #f8f1f1;
+    color: #3b0a45;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    width: 470px;
+    justify-content: space-between;
+}
+
+.message-div {
+    background-color: #f8f1f1;
+    color: #3b0a45;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.messages-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 470px;
+} 
+
+
+.message-meta {
+    font-size: 0.85rem;
+    color: rgba(59, 10, 69, 0.7); 
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-content {
+    font-size: 1rem;
+    color: #3b0a45;
+    line-height: 1.5;
+}
+
+.message-title {
+    font-size: 1.25rem;        
+    font-weight: 700;           
+    margin-bottom: 0.3rem;
+    color: #3b0a45;             
+}
+
+.input-label {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    flex: 1;
+    margin-top: 0.3rem;
+}
+
+label {
+    flex: 1;
+}
+
+form {
+    background-color: #f8f1f1;
+    color: #3b0a45;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+button {
+    background-color: #3b0a45;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #52205d;
+}
+
+input:focus {
+    border: 1px solid #52205d;
+}
+
+

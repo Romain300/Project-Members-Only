@@ -1,0 +1,20 @@
+<nav>
+    <div>
+        <% if (locals.user) {%> 
+            <div>Hello <%= user.name %> </div>
+            <a href="/logOut">Log Out</a>
+            <a href="newMessage">New Message</a>
+        <% } else { %>
+            <a href="/logIn">Log-In</a>
+            <a href="/signIn">Sign-Up</a>
+        <% } %>
+    </div>
+    
+    <a href="/">
+        <h1> Very very</h1> 
+        <h1>secret group</h1>
+    </a>
+        
+    
+    
+</nav>

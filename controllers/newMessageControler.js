@@ -27,7 +27,7 @@ const postMessage = [
             const date = new Date();
             const author_id = req.user.id;
             const { title, content } = req.body;
-            db.newMessage(author_id, title, content, date);
+            await db.newMessage(author_id, title, content, date);
             console.log("Your message has been created")
             return res.status(201).redirect("/");
         } catch (error) {
@@ -38,7 +38,8 @@ const postMessage = [
 ]
 
 function getFormMessage(req, res) {
-    res.render("newMessage");
+    console.log(req.session)
+    return res.render("newMessage");
 };
 
 module.exports = {

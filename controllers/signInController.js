@@ -46,7 +46,7 @@ const createUser = [
         try {
             console.log("creating new user...");
             const { name, surname, email } = req.body;
-            const userExist = db.getUserByEmail(email);
+            const userExist = await db.getUserByEmail(email);
             if (userExist) {
                 return res.status(400).render("signIn", {errors: [{msg: "Email address already used"}]});
             }

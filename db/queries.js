@@ -58,7 +58,10 @@ async function newMessage(authorId, title, content, date) {
 
 async function getAllMessages() {
     try {
-        const { rows } = await pool.query(`SELECT * FROM messages`);
+        const { rows } = await pool.query(`
+            SELECT title, content, date, name FROM messages
+            JOIN users ON author_id = users.id`
+        );
         return rows;
     }catch(error) {
         console.error(error);

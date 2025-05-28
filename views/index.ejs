@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles.css" rel="stylesheet">
     <title>Index</title>
 </head>
 <body>
-    <% if (locals.user) {%> 
-        <div>Hello <%= user.name %> </div>
-        <a href="/logOut">Log Out</a>
-        <a href="newMessage">New Message</a>
-    <% } else { %>
-        <a href="/logIn">Log In</a>
-        <a href="/signIn">Sign In</a>
-    <% } %>
+    <%- include("partials/navbar") %>
+    <div class="messages-div">
+        <% messages.forEach((message) => { %>
+            <div class="message-div">
+                <div class="message-meta">
+                    <% if (!locals.user) { %>
+                        <p>XXXXXX</p>
+                    <% } else { %>
+                        <p><%= message.name %></p>
+                    <% } %>
+                    <p><%= message.formattedDate %></p>
+                </div>
+                <div class="message-title"><%= message.title %></div>
+                <div class="message-content"><%= message.content %></div>
+            </div>
+        <% }) %>
+    </div>
+    
+    
 </body>
 </html>
