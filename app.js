@@ -4,6 +4,9 @@ const indexRouter = require("./routes/indexRouter");
 const signInRouter = require("./routes/signInRouter");
 const logInRouter = require("./routes/logInRouter");
 const newMessageRouter = require("./routes/newMessageRouter");
+const deleteMessageRouter = require("./routes/deleteMessageRouter");
+const adminRouter = require("./routes/adminRouter");
+const joinRouter = require("./routes/joinRouter");
 const passport = require("passport");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
@@ -30,7 +33,9 @@ app.use("/", indexRouter);
 app.use("/signIn", signInRouter);
 app.use("/logIn", logInRouter);
 app.use("/newMessage", newMessageRouter);
-
+app.use("/join", joinRouter);
+app.use("/deleteMessage", deleteMessageRouter);
+app.use("/admin", adminRouter);
 
 app.get("/logOut", (req, res, next) => {
     req.logout((err) => {
@@ -86,3 +91,7 @@ app.listen(PORT, () => {
 
 
 //use connect-pg-simple to store session in databse, instead of memory
+//correct display when admin log for navabar
+//add error pages
+//fetch message by more recent to older
+//display static div and add scroll

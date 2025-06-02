@@ -35,7 +35,11 @@ async function getUserByEmail(email) { //we use email as a usenname
 
 async function getUserById(id) {
     try {
-        const { rows } = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
+        const { rows } = await pool.query(
+            `SELECT * FROM users
+            JOIN memberships ON memberships.id_user = users.id  
+            WHERE id = $1`
+        , [id]);
         return rows[0];
     } catch(error) {
         console.error(error);
@@ -59,10 +63,47 @@ async function newMessage(authorId, title, content, date) {
 async function getAllMessages() {
     try {
         const { rows } = await pool.query(`
-            SELECT title, content, date, name FROM messages
+            SELECT title, content, date, name, messages.id AS id FROM messages
             JOIN users ON author_id = users.id`
         );
         return rows;
+    }catch(error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+async function updateMembership(userId) {
+    try {
+        await pool.query(`
+        UPDATE memberships
+        SET member = true
+        FROM users 
+        WHERE users.id = memberships.id_user 
+        AND users.id = $1
+        `, [userId]);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+async function updateAdmin(userId) {
+    try {
+        await pool.query(`
+        UPDATE memberships
+        SET admin = true
+        WHERE id_user = $1
+        `, [userId]);
+    }catch(error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+async function deleteMessage(messId) {
+    try {
+        await pool.query(`DELETE FROM messages WHERE id = $1`, [messId]);
     }catch(error) {
         console.error(error);
         throw error;
@@ -74,5 +115,8 @@ module.exports = {
     getUserByEmail,
     getUserById,
     newMessage,
-    getAllMessages
+    getAllMessages,
+    updateMembership,
+    deleteMessage,
+    updateAdmin
 };

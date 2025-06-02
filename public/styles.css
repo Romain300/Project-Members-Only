@@ -15,6 +15,7 @@ body {
     align-items: center;
     flex-direction: column;
     background-color: #3b0a45;
+    justify-content: center;
     
 }
 
@@ -25,7 +26,6 @@ a {
 nav {
     background-color: #f8f1f1;
     color: #3b0a45;
-    padding: 1rem;
     border-radius: 1rem;
     margin: 1rem;
     display: flex;
@@ -111,9 +111,11 @@ button {
     border-radius: 0.5rem;
     cursor: pointer;
     font-weight: bold;
+    margin-top: 0.5rem;
 }
 
-button:hover {
+button:hover,
+.links:hover {
     background-color: #52205d;
 }
 
@@ -121,4 +123,48 @@ input:focus {
     border: 1px solid #52205d;
 }
 
+.title-website {
+    padding: 1rem;
+}
 
+.links {
+    background-color: #3b0a45;
+    padding: 0.5rem;
+    display: inline-block;
+    
+}
+
+.navigation {
+    color: #f8f1f1;
+}
+
+.links-div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 500; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.log {
+    border-top-left-radius: 1rem;
+}
+
+.join {
+    border-bottom-left-radius: 1rem;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.delete-form {
+    padding: 0%;
+    text-align: end;
+}

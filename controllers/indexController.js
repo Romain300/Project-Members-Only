@@ -17,7 +17,7 @@ async function getIndex(req, res) {
     messages.forEach((msg) => {
         msg.formattedDate = formatDate(new Date(msg.date))
     })
-    return res.render("index", { user: req.user, messages: messages});
+    return res.render("index", { user: req.user, messages: messages });
 };
 
 module.exports = {

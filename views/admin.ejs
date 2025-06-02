@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles.css" rel="stylesheet">
+    <title>Become an Admin</title>
+</head>
+<body>
+    <%- include("partials/navbar") %>
+    <form method="POST" action="/admin">
+        <%- include("partials/errors") %>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="TheOne">
+        </div>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>

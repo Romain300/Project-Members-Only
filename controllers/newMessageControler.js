@@ -20,7 +20,7 @@ const postMessage = [
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             console.log("Failed to create message")
-            return res.status(401).render("newMessage", {errors: errors.array()});
+            return res.status(401).render("newMessage", { errors: errors.array(), user:req.user });
         }
 
         try {
@@ -39,7 +39,7 @@ const postMessage = [
 
 function getFormMessage(req, res) {
     console.log(req.session)
-    return res.render("newMessage");
+    return res.render("newMessage", { user: req.user });
 };
 
 module.exports = {
