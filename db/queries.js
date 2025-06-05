@@ -64,8 +64,9 @@ async function getAllMessages() {
     try {
         const { rows } = await pool.query(`
             SELECT title, content, date, name, messages.id AS id FROM messages
-            JOIN users ON author_id = users.id`
-        );
+            JOIN users ON author_id = users.id
+            ORDER BY date DESC
+        `);
         return rows;
     }catch(error) {
         console.error(error);

@@ -1,6 +1,15 @@
 <nav>
     <div class="links-div">
-        <% if (locals.user) {%>
+        <% if (locals.user && locals.user.member && locals.user.admin) { %>
+            <!-- Admin -->
+            <div class="links log">
+                <a class="navigation" href="/logOut">Log Out</a>
+            </div> 
+            <div class="links">
+                <a class="navigation" href="/newMessage">New Message</a>
+            </div>
+        <% } else if (locals.user && locals.user.member && !locals.user.admin) { %>
+            <!-- Member -->
             <div class="links log">
                 <a class="navigation" href="/logOut">Log Out</a>
             </div> 
@@ -8,13 +17,21 @@
                 <a class="navigation" href="/newMessage">New Message</a>
             </div>
             <div class="links join">
-                <% if (!locals.user.member) { %>
-                    <a class="navigation" href="/join">Join</a>
-                <% } else if (locals.user.member && !locals.user.admin) { %>
-                    <a class="navigation" href="/admin">Admin</a>
-                <% } %>  
+                <a class="navigation" href="/admin">Become Admin</a>
+            </div>
+        <% } else if (locals.user && !locals.user.member && !locals.user.admin) { %>
+            <!-- Logged-in but not member/admin -->
+            <div class="links log">
+                <a class="navigation" href="/logOut">Log Out</a>
+            </div> 
+            <div class="links">
+                <a class="navigation" href="/newMessage">New Message</a>
+            </div>
+            <div class="links join">
+                <a class="navigation" href="/join">Join</a>
             </div>
         <% } else { %>
+            <!-- Not logged in -->
             <div class="links log">
                 <a class="navigation" href="/logIn">Log-In</a>
             </div>
@@ -24,18 +41,17 @@
         <% } %>
     </div>
 
-    <% if (locals.user) {%>
-        <div class="welcome" href="/">
-            <h3>Logged in as </h3>
-            <h3><%= user.name %></h3>
+    <% if (locals.user) { %>
+        <div class="welcome">
+            <h3>Logged in as <%= user.name %></h3>
         </div>
     <% } %>
     
     <a class="title-website" href="/">
-        <h1> Very very</h1> 
+        <h1>Very very</h1> 
         <h1>secret group</h1>
     </a>
-    
 </nav>
+
 
 

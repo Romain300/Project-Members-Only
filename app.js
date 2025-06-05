@@ -12,6 +12,7 @@ const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
 const { getUserByEmail, getUserById } = require("./db/queries");
+const pgSession = require("connect-pg-simple")(session);
 require("dotenv").config() ;
 
 const app = express();
@@ -24,7 +25,15 @@ const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
+app.use(session({ 
+    secret: process.env.SESSION_SECRET, 
+    resave: false, 
+    saveUninitialized: false,
+    store: new (pgSession)({
+        conString: process.env.DATABASE_URL,
+        createTableIfMissing: true,
+    }),
+}));
 app.use(passport.initialize());
 app.use(passport.session()); //to use serialize and deserialize
 
@@ -90,8 +99,3 @@ app.listen(PORT, () => {
 });
 
 
-//use connect-pg-simple to store session in databse, instead of memory
-//correct display when admin log for navabar
-//add error pages
-//fetch message by more recent to older
-//display static div and add scroll

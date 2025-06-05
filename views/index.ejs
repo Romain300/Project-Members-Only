@@ -21,10 +21,13 @@
                 </div>
                 <div class="message-title"><%= message.title %></div>
                 <div class="message-content"><%= message.content %></div>
-                <form class="delete-form" action="/deleteMessage" method="POST">
-                    <input type="hidden" value="<%= message.id %>" name="messageId">
-                    <button type="sumbit">Delete</button>
-                </form>
+
+                <% if (locals.user && locals.user.member && locals.user.admin) { %> 
+                    <form class="delete-form" action="/deleteMessage" method="POST">
+                        <input type="hidden" value="<%= message.id %>" name="messageId">
+                        <button type="sumbit">Delete</button>
+                    </form>
+                <% } %>
             </div>
             
         <% }) %>

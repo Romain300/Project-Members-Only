@@ -30,7 +30,6 @@ nav {
     margin: 1rem;
     display: flex;
     width: 470px;
-    justify-content: space-between;
 }
 
 .message-div {
@@ -129,7 +128,7 @@ input:focus {
 
 .links {
     background-color: #3b0a45;
-    padding: 0.5rem;
+    padding: 0.6rem;
     display: inline-block;
     
 }
@@ -146,7 +145,6 @@ input:focus {
     letter-spacing: 0.5px; 
     display: flex;
     flex-direction: column;
-    
 }
 
 .log {
@@ -162,6 +160,7 @@ input:focus {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0.3rem;
 }
 
 .delete-form {
